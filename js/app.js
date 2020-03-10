@@ -27,6 +27,12 @@ const landingContainer = document.querySelectorAll(".landing__container");
  *
  */
 
+/* Auswählen aller einzelnen Sections */
+
+for (let i = 0; i < landingContainer.length; i++) {
+  console.log(landingContainer[i]);
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
