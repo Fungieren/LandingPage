@@ -31,7 +31,7 @@ const landingContainer = document.querySelectorAll(".landing__container");
  */
 
 for (let i = 0; i < landingContainer.length; i++) {
-  buttons[i].addEventListener("click", createElement);
+  navBar.addEventListener("click", createElement);
 }
 
 /**
@@ -62,7 +62,7 @@ const navBuilder = function() {
 
 // Set sections as active
 
-// Add new Section
+// Function: creates a new section and append it to the bottom of the HTML body
 
 function createElement() {
   let section_name = document.createElement();
