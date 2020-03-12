@@ -18,7 +18,10 @@
  *
  */
 
-const unorderedList = document.querySelector("#navbar__list");
+const navBar = document.getElementById("navbar__list");
+
+/* Getting the sections */
+
 const landingContainer = document.querySelectorAll(".landing__container");
 
 /**
@@ -27,19 +30,21 @@ const landingContainer = document.querySelectorAll(".landing__container");
  *
  */
 
-/* Auswählen aller einzelnen Sections */
-
 for (let i = 0; i < landingContainer.length; i++) {
-  console.log(landingContainer[i]);
+  buttons[i].addEventListener("click", createElement);
 }
 
 /**
  * End Helper Functions
- * Begin Main Functions
+ * Begin Main Functions (Where the code should start running (Fung))
  *
  */
 
 // build the nav
+const navBuilder = function() {
+  const newList = document.createElement("li");
+  newList.innerText = "Hallo";
+};
 
 // Add class 'active' to section when near top of viewport
 
@@ -56,3 +61,11 @@ for (let i = 0; i < landingContainer.length; i++) {
 // Scroll to section on link click
 
 // Set sections as active
+
+// Add new Section
+
+function createElement() {
+  let section_name = document.createElement();
+  section_name.textContent = "";
+  document.body.appendChild(section_name);
+}
