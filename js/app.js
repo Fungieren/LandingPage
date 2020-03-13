@@ -47,7 +47,11 @@ for (let i = 0; i < sectionList.length; i++) {
 }
 
 // Intersection observer
-const callback = function() {};
+const navObserver = function(entries) {
+  entries.forEach(entry => {
+    console.log(entry);
+  });
+};
 
 let options = {
   root: null,
@@ -55,7 +59,7 @@ let options = {
   threshold: 0.75
 };
 
-let observer = new IntersectionObserver(callback, options);
+let observer = new IntersectionObserver(navObserver, options);
 
 for (let i = 0; i < sectionList.length; i++) {
   observer.observe(sectionList[i]);
