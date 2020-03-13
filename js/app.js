@@ -22,7 +22,7 @@ const navBar = document.getElementById("navbar__list");
 
 /* Getting the sections */
 
-const landingContainer = document.querySelectorAll(".landing__container");
+const sectionList = document.querySelectorAll("section");
 
 /**
  * End Global Variables
@@ -30,8 +30,35 @@ const landingContainer = document.querySelectorAll(".landing__container");
  *
  */
 
-for (let i = 0; i < landingContainer.length; i++) {
-  navBar.addEventListener("click", createElement);
+for (let i = 0; i < sectionList.length; i++) {
+  // navBar.addEventListener("click", createElement);
+  const listElement = document.createElement("li");
+  listElement.setAttribute("class", "menu__link");
+  navBar.appendChild(listElement);
+
+  const aTag = document.createElement("a");
+  const containerId = "#" + sectionList[i].getAttribute("id");
+  aTag.setAttribute("href", containerId);
+  listElement.appendChild(aTag);
+
+  const sectionTopic = sectionList[i].children[0].children[0].innerText;
+  const linkName = document.createTextNode(sectionTopic);
+  aTag.appendChild(linkName);
+}
+
+// Intersection observer
+const callback = function() {};
+
+let options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.75
+};
+
+let observer = new IntersectionObserver(callback, options);
+
+for (let i = 0; i < sectionList.length; i++) {
+  observer.observe(sectionList[i]);
 }
 
 /**
