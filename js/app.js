@@ -30,11 +30,13 @@ const sectionList = document.querySelectorAll("section");
  *
  */
 
+ /* Creating menu links for each section and add it to the navbar */
 for (let i = 0; i < sectionList.length; i++) {
-  // navBar.addEventListener("click", createElement);
   const listElement = document.createElement("li");
   listElement.setAttribute("class", "menu__link");
   navBar.appendChild(listElement);
+
+/* Creating the a tags and adding them as child elements to the above created list */
 
   const aTag = document.createElement("a");
   const containerId = "#" + sectionList[i].getAttribute("id");
@@ -72,10 +74,6 @@ for (let i = 0; i < sectionList.length; i++) {
  */
 
 // build the nav
-const navBuilder = function() {
-  const newList = document.createElement("li");
-  newList.innerText = "Hallo";
-};
 
 // Add class 'active' to section when near top of viewport
 
@@ -94,9 +92,3 @@ const navBuilder = function() {
 // Set sections as active
 
 // Function: creates a new section and append it to the bottom of the HTML body
-
-function createElement() {
-  let section_name = document.createElement();
-  section_name.textContent = "";
-  document.body.appendChild(section_name);
-}
