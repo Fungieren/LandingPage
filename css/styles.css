@@ -47,6 +47,11 @@ p {
   color: #eee;
 }
 
+a {
+  color: #000;
+}
+
+
 /* ---- Layout Rules ---- */
 main {
   margin: 10vh 1em 10vh;
@@ -87,7 +92,7 @@ section {
 }
 
 .navbar__menu .menu__link:hover {
-  background: #333;
+  background: rgb(44, 44, 44, 0.6);
   color: #fff;
   transition: ease 0.3s all;
 }

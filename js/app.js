@@ -48,7 +48,7 @@ for (let i = 0; i < sectionList.length; i++) {
   aTag.appendChild(linkName);
 }
 
-// Intersection observer
+// Intersection observer (used tutorial: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 const navObserver = function(entries) {
   entries.forEach(entry => {
     console.log(entry);
