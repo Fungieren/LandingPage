@@ -31,13 +31,15 @@ const sectionList = document.querySelectorAll("section");
  */
 
  /* Creating menu links for each section and add it to the navbar */
+ // build the nav
+ // Scroll to anchor ID using scrollTO event
+ // Scroll to section on link click
 for (let i = 0; i < sectionList.length; i++) {
   const listElement = document.createElement("li");
   listElement.setAttribute("class", "menu__link");
   navBar.appendChild(listElement);
 
 /* Creating the a tags and adding them as child elements to the above created list */
-
   const aTag = document.createElement("a");
   const containerId = "#" + sectionList[i].getAttribute("id");
   aTag.setAttribute("href", containerId);
@@ -48,36 +50,12 @@ for (let i = 0; i < sectionList.length; i++) {
   aTag.appendChild(linkName);
 }
 
-// Intersection observer (used tutorial: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
-const navObserver = function(entries) {
-  entries.forEach(entry => {
-    console.log(entry);
-  });
-};
-
-let options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.75
-};
-
-let observer = new IntersectionObserver(navObserver, options);
-
-for (let i = 0; i < sectionList.length; i++) {
-  observer.observe(sectionList[i]);
-}
-
 /**
  * End Helper Functions
  * Begin Main Functions (Where the code should start running (Fung))
  *
  */
 
-// build the nav
-
-// Add class 'active' to section when near top of viewport
-
-// Scroll to anchor ID using scrollTO event
 
 /**
  * End Main Functions
@@ -87,13 +65,35 @@ for (let i = 0; i < sectionList.length; i++) {
 
 // Build menu
 
-// Scroll to section on link click
+// Add class 'active' to section when near top of viewport
+// Intersection observer (used tutorial: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+const options = {
+  threshold: 0.7
+};
+
+let observer = new IntersectionObserver(navObserver, options);
+
+function navObserver(sectionList) {
+  sectionList.forEach(section => {
+    const className = section.target.className;
+    console.log(className);
+    const activeClass = document.querySelector(`[data-nav=${className}]`);
+    console.log(activeClass);
+  });
+}
+
+sectionList.forEach(section => {
+  observer.observe(section)
+});
+
 
 // Set sections as active
 
 // Function: creates a new section and append it to the bottom of the HTML body
 
-// Used Tutorial here: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
+
+
+// Back-To-Top Button Used Tutorial here: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 // Get the button:
 mybutton = document.getElementById("backToTop");
 
