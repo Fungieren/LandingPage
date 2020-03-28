@@ -32,7 +32,6 @@
 */
 
 
-
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -47,7 +46,6 @@ for (let i = 0; i < sectionList.length; i++) {
   const containerId = "#" + sectionList[i].getAttribute("id");
   const sectionTopic = sectionList[i].children[0].children[0].innerText;
   const linkName = document.createTextNode(sectionTopic);
-  const sectionTarget = document.getElementById("section" + i);
 // Setting the class names for the list elements and adding them to the navbar
   listElement.setAttribute("class", "menu__link");
   navBar.appendChild(listElement);
@@ -56,11 +54,6 @@ for (let i = 0; i < sectionList.length; i++) {
   aTag.setAttribute("href", containerId);
   listElement.appendChild(aTag);
   aTag.appendChild(linkName);
-
-  listElement.addEventListener("click", function() {
-    const aTagClicked = sectionTarget.onclick;
-    console.log(aTagClicked);
-    });
 }
 
 /* Add class 'active' to section when near top of viewport
