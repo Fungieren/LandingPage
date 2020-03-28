@@ -47,21 +47,24 @@ for (let i = 0; i < sectionList.length; i++) {
   const containerId = "#" + sectionList[i].getAttribute("id");
   const sectionTopic = sectionList[i].children[0].children[0].innerText;
   const linkName = document.createTextNode(sectionTopic);
+  const sectionTarget = document.getElementById("section" + i);
+// Setting the class names for the list elements and adding them to the navbar
   listElement.setAttribute("class", "menu__link");
   navBar.appendChild(listElement);
 
-/* Creating the a tags and adding them as child elements to the above created list */
- 
+// Creating the a tags and adding them as child elements to the above created list
   aTag.setAttribute("href", containerId);
   listElement.appendChild(aTag);
-
- 
   aTag.appendChild(linkName);
+
+  listElement.addEventListener("click", function() {
+    const aTagClicked = sectionTarget.onclick;
+    console.log(aTagClicked);
+    });
 }
 
-
-// Add class 'active' to section when near top of viewport
-// Intersection observer (used tutorial: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+/* Add class 'active' to section when near top of viewport
+ Intersection observer (used tutorial: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) */
 const options = {
   threshold: 0.7
 };
@@ -70,8 +73,8 @@ let observer = new IntersectionObserver(activeNavItem, options);
 
 function activeNavItem(entries) {
   entries.forEach(entry => {
-    const idName = entry.target.idName;
-    console.log(idName);
+    const listElement = entry.target.listElement;
+    console.log(listElement);
   });
 }
 
@@ -113,6 +116,10 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+mybutton.addEventListener("click", function() {
+  console.log("You clicked back to top");
+});
 
 // Set sections as active
 
