@@ -22,7 +22,7 @@
  const navBar = document.getElementById("navbar__list");
 
  /* Getting the each section section */
- const sectionList = document.querySelectorAll("section");
+ const sections = document.querySelectorAll("section");
 
 
 /**
@@ -38,13 +38,14 @@
  * 
 */
 
+
 // build the nav
 
-for (let i = 0; i < sectionList.length; i++) {
+for (let i = 0; i < sections.length; i++) {
   const listElement = document.createElement("li");
   const aTag = document.createElement("a");
-  const containerId = "#" + sectionList[i].getAttribute("id");
-  const sectionTopic = sectionList[i].children[0].children[0].innerText;
+  const containerId = "#" + sections[i].getAttribute("id");
+  const sectionTopic = sections[i].children[0].children[0].innerText;
   const linkName = document.createTextNode(sectionTopic);
 // Setting the class names for the list elements and adding them to the navbar
   listElement.setAttribute("class", "menu__link");
@@ -54,6 +55,8 @@ for (let i = 0; i < sectionList.length; i++) {
   aTag.setAttribute("href", containerId);
   listElement.appendChild(aTag);
   aTag.appendChild(linkName);
+
+  console.log(sectionTopic);
 }
 
 /* Add class 'active' to section when near top of viewport
@@ -66,14 +69,48 @@ let observer = new IntersectionObserver(activeNavItem, options);
 
 function activeNavItem(entries) {
   entries.forEach(entry => {
-    const listElement = entry.target.listElement;
-    console.log(listElement);
+   const targetId = entry.target.id;
+   console.log(targetId);
   });
 }
 
-sectionList.forEach(sectionList => {
-  observer.observe(sectionList);
+sections.forEach(section => {
+  observer.observe(section);
 });
+
+//Checks if section is in view and adds active-class with moving background and color change
+// const containerCount = document.getElementsByClassName("landing__container").length;
+
+// function checkIfSectionInView() {
+//   let isInViewport = function(elem) {
+//     let bounding = elem.getBoundingClientRect();
+//     return (
+//       bounding.top <= 50 &&
+//       bounding.bottom <=
+//         (window.innerHeight || document.documentElement.clientHeight) &&
+//       bounding.right <=
+//         (window.innerWidth || document.documentElement.clientWidth)
+      
+//     );
+//   };
+//   console.log(isInViewport);
+
+//   for (i = 1; i < containerCount + 1; i++) {
+//     let sectionInFullView = document.getElementById("section" + i);
+//     window.addEventListener(
+//       "scroll",
+//       function(event) {
+//         if (isInViewport(sectionInFullView)) {
+//           sectionInFullView.classList.add("your-active-class");
+//         } else {
+//           sectionInFullView.classList.remove("your-active-class");
+//         }
+//       },
+//       false
+//     );
+//   }
+// }
+
 
 
 // Scroll to anchor ID using scrollTO event
@@ -115,5 +152,3 @@ mybutton.addEventListener("click", function() {
 });
 
 // Set sections as active
-
-
