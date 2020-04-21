@@ -47,6 +47,7 @@ for (let i = 0; i < sections.length; i++) {
   const containerId = "#" + sections[i].getAttribute("id");
   const sectionTopic = sections[i].children[0].children[0].innerText;
   const linkName = document.createTextNode(sectionTopic);
+
 // Setting the class names for the list elements and adding them to the navbar
   listElement.setAttribute("class", "menu__link");
   navBar.appendChild(listElement);
@@ -55,62 +56,31 @@ for (let i = 0; i < sections.length; i++) {
   aTag.setAttribute("href", containerId);
   listElement.appendChild(aTag);
   aTag.appendChild(linkName);
-
-  console.log(sectionTopic);
 }
 
-/* Add class 'active' to section when near top of viewport
- Intersection observer (used tutorial: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) */
+//Checks if section is in view and adds active-class with moving background and color change
 const options = {
-  threshold: 0.7
+  threshold: 1
 };
 
-let observer = new IntersectionObserver(activeNavItem, options);
+let observer = new IntersectionObserver(navElement, options);
 
-function activeNavItem(entries) {
-  entries.forEach(entry => {
-   const targetId = entry.target.id;
-   console.log(targetId);
+function navElement(elements) {
+  elements.forEach(element => {
+    const sectionId = element.target.id;
+    console.log(sectionId);
+    
+    if (sectionId.isIntersecting) {
+      sections[i].classList.add("your-active-class");
+    } else {
+      false;
+    };
   });
 }
 
 sections.forEach(section => {
   observer.observe(section);
 });
-
-//Checks if section is in view and adds active-class with moving background and color change
-// const containerCount = document.getElementsByClassName("landing__container").length;
-
-// function checkIfSectionInView() {
-//   let isInViewport = function(elem) {
-//     let bounding = elem.getBoundingClientRect();
-//     return (
-//       bounding.top <= 50 &&
-//       bounding.bottom <=
-//         (window.innerHeight || document.documentElement.clientHeight) &&
-//       bounding.right <=
-//         (window.innerWidth || document.documentElement.clientWidth)
-      
-//     );
-//   };
-//   console.log(isInViewport);
-
-//   for (i = 1; i < containerCount + 1; i++) {
-//     let sectionInFullView = document.getElementById("section" + i);
-//     window.addEventListener(
-//       "scroll",
-//       function(event) {
-//         if (isInViewport(sectionInFullView)) {
-//           sectionInFullView.classList.add("your-active-class");
-//         } else {
-//           sectionInFullView.classList.remove("your-active-class");
-//         }
-//       },
-//       false
-//     );
-//   }
-// }
-
 
 
 // Scroll to anchor ID using scrollTO event
