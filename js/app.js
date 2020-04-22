@@ -93,13 +93,13 @@ sections.forEach(section => {
 
 // Back-To-Top Button Used Tutorial here: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 // Get the button:
-mybutton = document.getElementById("backToTop");
+const mybutton = document.getElementById("backToTop");
 
-// When the user scrolls down 20px from the top of the document, show the button
+// When the user scrolls down 35px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > 35 || document.documentElement.scrollTop > 35) {
     mybutton.style.display = "block";
   } else {
     mybutton.style.display = "none";

@@ -126,16 +126,16 @@ section {
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: rgb(123, 233, 21, 0.4); /* Set a background color */
-  color: black; /* Text color */
+  background-color: rgb(123, 233, 21, 0.7); /* Set a background color */
+  color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 10px; /* Some padding */
+  padding: 20px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
-  font-size: 12px; /* Increase font size */
+  font-size: 15px; /* Increase font size */
 }
 
 #backToTop:hover {
-  background-color: #333; /* Add a dark-grey background on hover */
+  background-color: rgb(216, 32, 32, 0.7); /* Add a dark-grey background on hover */
   color: white;
 }
 
