@@ -49,18 +49,20 @@ for (let i = 0; i < sections.length; i++) {
   const linkName = document.createTextNode(sectionTopic);
 
 // Setting the class names for the list elements and adding them to the navbar
+// Build menu
   listElement.setAttribute("class", "menu__link");
   navBar.appendChild(listElement);
-
 // Creating the a tags and adding them as child elements to the above created list
+// Scroll to section on link click
   aTag.setAttribute("href", containerId);
   listElement.appendChild(aTag);
   aTag.appendChild(linkName);
 }
 
-//Checks if section is in view and adds active-class with moving background and color change
+// Checks if section is in view and adds active-class with moving background and color change
+// Used tutorial here: https://developer.mozilla.org/de/docs/Web/API/IntersectionObserver
 const options = {
-  threshold: 1
+  threshold: 0.7
 };
 
 let observer = new IntersectionObserver(navElement, options);
@@ -68,12 +70,13 @@ let observer = new IntersectionObserver(navElement, options);
 function navElement(elements) {
   elements.forEach(element => {
     const sectionId = element.target.id;
-    console.log(sectionId);
-    
-    if (sectionId.isIntersecting) {
-      sections[i].classList.add("your-active-class");
+    if (element.isIntersecting) {
+      console.log(sectionId + " is your active class");
+      element.target.classList.add("your-active-class");
     } else {
-      false;
+      // sectionId.classList.remove("your-active-class");
+      console.log(sectionId + " is not your active class");
+      element.target.classList.remove("your-active-class");
     };
   });
 }
@@ -82,19 +85,11 @@ sections.forEach(section => {
   observer.observe(section);
 });
 
-
-// Scroll to anchor ID using scrollTO event
-
-
 /**
  * End Main Functions
  * Begin Events
  * 
 */
-
-// Build menu 
-
-// Scroll to section on link click
 
 // Back-To-Top Button Used Tutorial here: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 // Get the button:
