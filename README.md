@@ -1,13 +1,20 @@
 # Landing Page Project
 
-## Table of Contents
+Hello guys!
 
-* [Instructions](#instructions)
+This is my solution for the Udacity Landing Page Project. We were provided with a starter project which has some HTML and CSS styling. Our task was to design it with HTML, CSS, but primarily JavaScript in a way to make it interactive.
 
-## Instructions
+## Navbar
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+At first I designed a navbar which create itself dynamically to the number of sections in the HTML code. 
+The navbar itself adds a new link if I add a new section in the HTML.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Active Section
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+In the following part I decided to use the IntersectionObserver API to see which part of the landing page is in the viewport. The section in viewport will be set active by JavaScript.
+
+## Back to Top Button
+
+The back to top button will display on the bottom right if you scroll down. You can jump back to top whereever you are on the page.
+
+
